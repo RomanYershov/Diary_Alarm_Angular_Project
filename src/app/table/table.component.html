@@ -1,0 +1,12 @@
+<span class="new badge pink waves-effect">{{time.display()}}</span>
+<input type="month" [(ngModel)]="datePick"  (change)="ChangeDate()" />
+<table style="background: #009688;">
+    <div class="row" *ngFor="let col of diary.table.columns; let i = index" class="col-table" [ngClass]="{current:i==currentDay - 1}">
+        <input type="text" value="{{i+1}}" readonly class="browser-default cell-col cell-day"
+            [ngClass]="{active:i==currentDay - 1}" />
+        <div *ngFor="let cell of col.cells">
+            <input type="text" [(ngModel)]="cell.value" class="browser-default cell-col" />
+        </div>
+    </div>
+</table>
+<input type="button" class="btn btn-small" value="Save" (click)="Save()" />

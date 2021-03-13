@@ -1,0 +1,74 @@
+<!-- <input type="button" value="add" (click)="addTimer()">
+<div class="container" *ngFor="let timer of clocks; let i = index">
+    <div style="padding: 5px;margin-right: 1px;margin-bottom: 1px;" class="blue left">
+        <small>#{{i+1}} </small>
+        <div style="display: inline-block;" *ngIf="timer.name == 'timer'">
+            <input type="text" placeholder="min" style="width: 30px;" [(ngModel)]="timer.minutes"
+                class="browser-default">
+            <input type="text" placeholder="sec" style="width: 30px" [(ngModel)]="timer.seconds"
+                class="browser-default">
+        </div>
+        <div style="display: inline-block;width:120px;">
+            <span style="padding-left: 12px;padding-right: 12px;color: blanchedalmond;">{{timer.display()}}</span>
+        </div>
+        <div *ngIf="!timer.isOn" style="display: inline;">
+            <button class="waves-effect waves-light btn-small  #616161 grey darken-2" (click)="timerOn(timer)"> <i
+                    class="material-icons">play_arrow</i></button>
+        </div>
+        <div *ngIf="timer.isOn" style="display: inline;">
+            <button class="waves-effect waves-light btn-small  #00e676 green accent-3" (click)="pause(timer)"><i
+                    class="material-icons">pause_circle_outline</i></button>
+        </div>
+        <button class="btn-small waves-effect waves-light #ef5350 red lighten-1" (click)="reset(timer)"><i
+                class="material-icons">refresh</i></button>
+        <div style="display:inline-block;" *ngIf="timer.name == 'secondomer'">
+            <button class="btn-small waves-effect waves-light #ef5350 yellow lighten-1" (click)="round(timer)"><i
+                    class="material-icons">all_inclusive</i></button>
+        </div>
+        <div *ngFor="let runTime of timer.rounds; let i = index">
+            <p><span>{{i+1}}/</span> {{runTime}}</p>
+        </div>
+        <div *ngFor="let alarm of timer.alarms">
+
+            <div class="switch yellow" style="padding:5px;">
+                <span>{{alarm.name}}/{{alarm.display()}}</span>
+                <label class="right">
+                    Off
+                    <input type="checkbox" [(ngModel)]="alarm.isOn" (change)="alarm.onOff(alarm.isOn)">
+                    <span class="lever"></span>
+                    On
+                </label>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+<div class="container">
+    <div style="margin-right: 1px;margin-bottom: 1px;" class="blue left clock-box">
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs">
+                    <li class="tab col s4"><a class="active" href="#test1">Alarm</a></li>
+                    <li class="tab col s4"><a  href="#test2">Timer</a></li>
+                    <li class="tab col s4"><a href="#test4">secondomer</a></li>
+                </ul>
+            </div>
+            <div id="test1" class="col s12">
+                <h3 class="time-box">{{clock.display()}}</h3>
+                <alarm [currentTime]="clock.display()"></alarm>
+            </div>
+            <div id="test2" class="col s12">
+                <h3 class="time-box">{{clock.display()}}</h3>
+                <timer></timer>
+            </div>
+            <div id="test4" class="col s12">
+                <h3 class="time-box">{{clock.display()}}</h3>
+                <secondomer></secondomer>
+            </div>
+        </div>
+    </div>
+</div>

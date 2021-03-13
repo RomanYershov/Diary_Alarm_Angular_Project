@@ -1,0 +1,25 @@
+
+<div *ngFor="let timer of timers">
+    <div class="" style="margin-top: 1px; padding:5px;color: bisque;background: #555">
+        <input type="text" placeholder="min" style="width: 30px;" [(ngModel)]="timer.minutes"
+            class="browser-default">
+        <input type="text" placeholder="sec" style="width: 30px" [(ngModel)]="timer.seconds"
+            class="browser-default">
+        <div style="display: inline-block;width:120px;">
+            <span
+                style="padding-left: 12px;padding-right: 12px;color: blanchedalmond;">{{timer.display()}}</span>
+        </div>
+        <div *ngIf="!timer.isOn" style="display: inline;">
+            <button class="waves-effect waves-light btn-small  #616161 grey darken-2"
+                (click)="timerOn(timer)"> <i class="material-icons">play_arrow</i></button>
+        </div>
+        <div *ngIf="timer.isOn" style="display: inline;">
+            <button class="waves-effect waves-light btn-small  #00e676 green accent-3"
+                (click)="pause(timer)"><i class="material-icons">pause_circle_outline</i></button>
+        </div>
+        <button class="btn-small waves-effect waves-light #ef5350 red lighten-1"
+            (click)="reset(timer)"><i class="material-icons">refresh</i></button>
+    </div>
+</div>
+<a class="btn-floating btn-small waves-effect waves-light red right" value="add" (click)="addTimer()"><i
+        class="material-icons">add</i></a>

@@ -1,0 +1,27 @@
+<div *ngFor="let secondomer of secondomers">
+        <div class="" style="margin-top: 1px; padding:5px;color: bisque;background: #555">
+            <div style="display: inline-block;width:120px;">
+                <span
+                    style="padding-left: 12px;padding-right: 12px;color: blanchedalmond;">{{secondomer.display()}}</span>
+            </div>
+            <div *ngIf="!secondomer.isOn" style="display: inline;">
+                <button class="waves-effect waves-light btn-small  #616161 grey darken-2"
+                    (click)="secondomerOn(secondomer)"> <i class="material-icons">play_arrow</i></button>
+            </div>
+            <div *ngIf="secondomer.isOn" style="display: inline;">
+                <button class="waves-effect waves-light btn-small  #00e676 green accent-3"
+                    (click)="pause(secondomer)"><i class="material-icons">pause_circle_outline</i></button>
+            </div>
+            <button class="btn-small waves-effect waves-light #ef5350 red lighten-1"
+                (click)="reset(secondomer)"><i class="material-icons">refresh</i></button>
+            <div style="display:inline-block;">
+                <button class="btn-small waves-effect waves-light #ef5350 yellow lighten-1"
+                    (click)="round(secondomer)"><i class="material-icons">all_inclusive</i></button>
+            </div>
+            <div *ngFor="let round of secondomer.rounds; let i = index" style="display: inline-block;">
+                <small style="padding-left: 2px; padding-right: 2px;"><small>{{i+1}}/</small> {{round}}</small>
+            </div>
+        </div>
+    </div>
+    <a class="btn-floating btn-small waves-effect waves-light red right" value="add"
+        (click)="addSecondomer()"><i class="material-icons">add</i></a>

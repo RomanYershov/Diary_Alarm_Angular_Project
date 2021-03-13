@@ -1,0 +1,85 @@
+<!-- <h3 style="padding-left: 12px;padding-right: 12px;color: blanchedalmond;">{{clock.display()}}</h3> -->
+<div *ngFor="let alarm of alarms">
+    <div class="switch" style="margin-top: 1px; padding:5px;color: bisque;background: #555">
+        <span>{{alarm.display()}}</span>
+        <label class="" style="margin-left:25px;">
+            <input type="checkbox" [(ngModel)]="alarm.isOn" (change)="alarm.onOff(alarm.isOn)">
+            <span class="lever"></span>
+        </label>
+        <span class="right">-</span>
+    </div>
+</div>
+
+
+
+<!-- Modal Trigger -->
+<a class="btn-floating btn-small waves-effect waves-light red right modal-trigger" href="#modal1"><i
+        class="material-icons">add</i></a>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal" style="width: 45%;">
+    <div class="modal-content">
+        <h3>{{currentTime}}</h3>
+      
+                <input type="time" [(ngModel)]="alarmTime" class="browser-default" name="time">
+                <select (change)="selected(selectedReplayType)" class="browser-default"
+                    [(ngModel)]="selectedReplayType">
+                    <option [ngValue]="type.id" *ngFor="let type of typeReplay;">{{type.value}}</option>
+                </select>
+                <div *ngIf="selectedReplayType == 5">
+                    <div class="row">
+                        <div class="col s6">
+                            <p>
+                                <label style="padding-right: 5px;">
+                                    <input type="checkbox" class="filled-in" name="pn"/>
+                                    <span>Пн</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" name="vt"/>
+                                    <span>Вт</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" name="sr"/>
+                                    <span>Ср</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" name="cht"/>
+                                    <span>Чт</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="col s6">
+                            <p>
+                                <label style="padding-right: 5px;">
+                                    <input type="checkbox" class="filled-in" name="pt"/>
+                                    <span>Пт</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" name="sb"/>
+                                    <span>Сб</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" name="vs"/>
+                                    <span>Вс</span>
+                                </label>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+          
+    
+    </div>
+    <div class="modal-footer">
+        <input type="button" (click)="addAlarm(myForm)" value="ok">
+    </div>
+</div>

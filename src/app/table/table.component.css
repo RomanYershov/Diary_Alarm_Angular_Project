@@ -1,0 +1,47 @@
+.body {
+    background: #009688;
+}
+.diary-table{
+    border: solid blue 1px;
+    height: 100%;
+    width: 100%;
+}
+
+.col-table{
+    /* border: solid brown 1px; */
+    float: left;
+    height: 100%;
+    width: 22px;
+    font-size: 11px;
+}
+.col-table.current{
+    box-shadow: inset 0 0 2px 1px black;
+}
+.cell-day.active{
+    background: #FF5252;
+    color: black;
+    box-shadow: inset 0 0 2px 1px black;
+}
+.cell-col{
+    width: 21px;
+    height: 21px;
+    margin-left: 0;
+    margin-bottom: 1px;
+    text-align: center;
+    border: none;
+    background: rgba(0, 0, 0, 0.38);
+    color: #FFF176;
+    border-radius: 0.5px;
+}
+
+ .cell-col.cell-day{
+    background: rgba(0, 0, 0, 0.55);
+    color: #dca7a6;
+    transition: all .4s;
+    font-size: 12px;
+    box-shadow: inset 0 0 1px 1px black;
+}
+.cell-day:hover {
+    transform: rotate(360deg);
+    /*border-radius: 10px;*/
+}
