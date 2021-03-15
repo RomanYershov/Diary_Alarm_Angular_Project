@@ -36,7 +36,7 @@ export class DiaryService {
     return this.http.post("http://localhost:6699/api/diary/save", body, { headers: headers });
   }
 
-
+  
 
   GetTableByDate(date: string, diary: Diary) {
     this.getTableByDate(date)
@@ -70,9 +70,10 @@ export class DiaryService {
   }
   private GetCells(table: Table, clear: boolean = false): Cell[] {
     let cells: Cell[] = [];
-    table.columns.forEach(column => {
-      column.cells.forEach(cell => {
+    table.columns.forEach((column) => {
+      column.cells.forEach((cell, index) => {
         if (clear) cell.value = "";
+        cell.index = index;
         cells.push(cell);
       });
     });

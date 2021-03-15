@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { DiaryService } from '../services/diary.service';
 import { DateService } from '../services/date.service';
 import { Table } from '../models/diary/table';
 import { Diary } from '../models/diary/diary';
 import { IClock } from '../interfaces/IClock';
 import { Clock } from '../models/clock/clock';
+import { Description } from '../models/diary/description';
 
 @Component({
   selector: 'app-table',
@@ -18,10 +19,12 @@ export class TableComponent implements OnInit {
   private currentDay: number;
   private datePick: string;
   time: IClock;
+  description: Description;
 
   constructor(private diaryService: DiaryService, private dateService: DateService) {
     this.diary = new Diary(new Table(652));
     this.time = new Clock();
+    this.description = new Description(); 
   }
 
   ngOnInit() {
@@ -31,7 +34,28 @@ export class TableComponent implements OnInit {
     this.datePick = currentDateString;
   }
 
-
+ cellClick(index:number){
+    this.description.descrTempl.forEach(item => {
+      if(item.val == index){
+        item.cl = 'active-description'
+      }
+      else{
+        item.cl = 'none'
+      }
+      //console.log(this.diary.table.columns)
+     
+    })
+    this.diary.table.columns.forEach(col => {
+      col.cells.forEach(cell => {
+        if(cell.index == index)
+        {
+          cell.state = 'active-row'
+        }
+        else
+        cell.state = ''
+      });
+    });
+ }
 
 
   ChangeDate() {
